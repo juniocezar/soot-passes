@@ -1,0 +1,501 @@
+public class MyCalculator extends java.awt.Frame
+{
+    public boolean setClear;
+    double number;
+    double memValue;
+    char op;
+    java.lang.String[] digitButtonText;
+    java.lang.String[] operatorButtonText;
+    java.lang.String[] memoryButtonText;
+    java.lang.String[] specialButtonText;
+    MyDigitButton[] digitButton;
+    MyOperatorButton[] operatorButton;
+    MyMemoryButton[] memoryButton;
+    MySpecialButton[] specialButton;
+    java.awt.Label displayLabel;
+    java.awt.Label memLabel;
+    final int FRAME_WIDTH;
+    final int FRAME_HEIGHT;
+    final int HEIGHT;
+    final int WIDTH;
+    final int H_SPACE;
+    final int V_SPACE;
+    final int TOPX;
+    final int TOPY;
+
+    void <init>(java.lang.String)
+    {
+        MyCalculator l0;
+        java.lang.String l1, $r31, $r38, $r45, $r52;
+        short l5, l7;
+        java.lang.String[] $r0, $r1, $r2, $r3, $r4, $r6, $r8, $r10, $r30, $r37, $r44, $r51;
+        int $i0, $i1, $i2, $i3, $i4, $i5, $i6, $i7, $i8, $i9, $i10, $i11, $i12, $i13, l3#4, l4, l2#6, l6, l8, l4_1, l3#4_1, l3#4_2, l4_2, l4_3, l2#6_1, l4_4, l2#6_2, l4_5, l2#6_3, l3#4_3, l2#6_4, l3#4_4, l6_1, l2#6_5, l2#6_6, l3#4_5, l2#6_7, l3#4_6, l6_2, l6_3, l2#6_8, l3#4_7, l2#6_9, l8_1, l3#4_8, l2#6_10, l2#6_11, l3#4_9, l2#6_12, l3#4_10, l8_2;
+        MyDigitButton[] $r5, $r26, $r39, $r40;
+        MyOperatorButton[] $r7, $r27, $r32, $r33;
+        MyMemoryButton[] $r9, $r24, $r53, $r54;
+        MySpecialButton[] $r11, $r25, $r46, $r47;
+        java.awt.Label $r12, $r13, $r14, $r16, $r18, $r19, $r21, $r22;
+        java.awt.Color $r15, $r17, $r34, $r41, $r48, $r55;
+        MyCalculator$1 $r28;
+        MyOperatorButton $r29, $r35;
+        MyDigitButton $r36, $r42;
+        MySpecialButton $r43, $r49;
+        MyMemoryButton $r50, $r56;
+        byte l2, l3, l4#9, l2_1, l3_1;
+
+        l0 := @this: MyCalculator;
+
+        l1 := @parameter0: java.lang.String;
+
+        specialinvoke l0.<java.awt.Frame: void <init>(java.lang.String)>(l1);
+
+        l0.<MyCalculator: boolean setClear> = 1;
+
+        $r0 = newarray (java.lang.String)[12];
+
+        $r0[0] = "7";
+
+        $r0[1] = "8";
+
+        $r0[2] = "9";
+
+        $r0[3] = "4";
+
+        $r0[4] = "5";
+
+        $r0[5] = "6";
+
+        $r0[6] = "1";
+
+        $r0[7] = "2";
+
+        $r0[8] = "3";
+
+        $r0[9] = "0";
+
+        $r0[10] = "+/-";
+
+        $r0[11] = ".";
+
+        l0.<MyCalculator: java.lang.String[] digitButtonText> = $r0;
+
+        $r1 = newarray (java.lang.String)[8];
+
+        $r1[0] = "/";
+
+        $r1[1] = "sqrt";
+
+        $r1[2] = "*";
+
+        $r1[3] = "%";
+
+        $r1[4] = "-";
+
+        $r1[5] = "1/X";
+
+        $r1[6] = "+";
+
+        $r1[7] = "=";
+
+        l0.<MyCalculator: java.lang.String[] operatorButtonText> = $r1;
+
+        $r2 = newarray (java.lang.String)[4];
+
+        $r2[0] = "MC";
+
+        $r2[1] = "MR";
+
+        $r2[2] = "MS";
+
+        $r2[3] = "M+";
+
+        l0.<MyCalculator: java.lang.String[] memoryButtonText> = $r2;
+
+        $r3 = newarray (java.lang.String)[3];
+
+        $r3[0] = "Backspc";
+
+        $r3[1] = "C";
+
+        $r3[2] = "CE";
+
+        l0.<MyCalculator: java.lang.String[] specialButtonText> = $r3;
+
+        $r4 = l0.<MyCalculator: java.lang.String[] digitButtonText>;
+
+        $i0 = lengthof $r4;
+
+        $r5 = newarray (MyDigitButton)[$i0];
+
+        l0.<MyCalculator: MyDigitButton[] digitButton> = $r5;
+
+        $r6 = l0.<MyCalculator: java.lang.String[] operatorButtonText>;
+
+        $i1 = lengthof $r6;
+
+        $r7 = newarray (MyOperatorButton)[$i1];
+
+        l0.<MyCalculator: MyOperatorButton[] operatorButton> = $r7;
+
+        $r8 = l0.<MyCalculator: java.lang.String[] memoryButtonText>;
+
+        $i2 = lengthof $r8;
+
+        $r9 = newarray (MyMemoryButton)[$i2];
+
+        l0.<MyCalculator: MyMemoryButton[] memoryButton> = $r9;
+
+        $r10 = l0.<MyCalculator: java.lang.String[] specialButtonText>;
+
+        $i3 = lengthof $r10;
+
+        $r11 = newarray (MySpecialButton)[$i3];
+
+        l0.<MyCalculator: MySpecialButton[] specialButton> = $r11;
+
+        $r12 = new java.awt.Label;
+
+        specialinvoke $r12.<java.awt.Label: void <init>(java.lang.String,int)>("0", 2);
+
+        l0.<MyCalculator: java.awt.Label displayLabel> = $r12;
+
+        $r13 = new java.awt.Label;
+
+        specialinvoke $r13.<java.awt.Label: void <init>(java.lang.String,int)>(" ", 2);
+
+        l0.<MyCalculator: java.awt.Label memLabel> = $r13;
+
+        l0.<MyCalculator: int FRAME_WIDTH> = 325;
+
+        l0.<MyCalculator: int FRAME_HEIGHT> = 325;
+
+        l0.<MyCalculator: int HEIGHT> = 30;
+
+        l0.<MyCalculator: int WIDTH> = 30;
+
+        l0.<MyCalculator: int H_SPACE> = 10;
+
+        l0.<MyCalculator: int V_SPACE> = 10;
+
+        l0.<MyCalculator: int TOPX> = 30;
+
+        l0.<MyCalculator: int TOPY> = 50;
+
+        l2 = 30;
+
+        l3 = 50;
+
+        $r14 = l0.<MyCalculator: java.awt.Label displayLabel>;
+
+        virtualinvoke $r14.<java.awt.Label: void setBounds(int,int,int,int)>(l2, l3, 240, 30);
+
+        $r16 = l0.<MyCalculator: java.awt.Label displayLabel>;
+
+        $r15 = <java.awt.Color: java.awt.Color BLUE>;
+
+        virtualinvoke $r16.<java.awt.Label: void setBackground(java.awt.Color)>($r15);
+
+        $r18 = l0.<MyCalculator: java.awt.Label displayLabel>;
+
+        $r17 = <java.awt.Color: java.awt.Color WHITE>;
+
+        virtualinvoke $r18.<java.awt.Label: void setForeground(java.awt.Color)>($r17);
+
+        $r19 = l0.<MyCalculator: java.awt.Label displayLabel>;
+
+        virtualinvoke l0.<MyCalculator: java.awt.Component add(java.awt.Component)>($r19);
+
+        $r21 = l0.<MyCalculator: java.awt.Label memLabel>;
+
+        virtualinvoke $r21.<java.awt.Label: void setBounds(int,int,int,int)>(30, 90, 30, 30);
+
+        $r22 = l0.<MyCalculator: java.awt.Label memLabel>;
+
+        virtualinvoke l0.<MyCalculator: java.awt.Component add(java.awt.Component)>($r22);
+
+        l2_1 = 30;
+
+        l3#4 = 130;
+
+(0)     l4 = 0;
+
+     label01:
+        l4_1 = Phi(l4 #0, l4_2 #1);
+
+        l3#4_1 = Phi(l3#4 #0, l3#4_2 #1);
+
+        $r24 = l0.<MyCalculator: MyMemoryButton[] memoryButton>;
+
+        $i4 = lengthof $r24;
+
+        if l4_1 >= $i4 goto label02;
+
+        $r53 = l0.<MyCalculator: MyMemoryButton[] memoryButton>;
+
+        $r50 = new MyMemoryButton;
+
+        $r51 = l0.<MyCalculator: java.lang.String[] memoryButtonText>;
+
+        $r52 = $r51[l4_1];
+
+        specialinvoke $r50.<MyMemoryButton: void <init>(int,int,int,int,java.lang.String,MyCalculator)>(l2_1, l3#4_1, 30, 30, $r52, l0);
+
+        $r53[l4_1] = $r50;
+
+        $r54 = l0.<MyCalculator: MyMemoryButton[] memoryButton>;
+
+        $r56 = $r54[l4_1];
+
+        $r55 = <java.awt.Color: java.awt.Color RED>;
+
+        virtualinvoke $r56.<MyMemoryButton: void setForeground(java.awt.Color)>($r55);
+
+        l3#4_2 = l3#4_1 + 40;
+
+        l4_2 = l4_1 + 1;
+
+(1)     goto label01;
+
+     label02:
+        l2#6 = 70;
+
+        l3_1 = 90;
+
+(2)     l4_3 = 0;
+
+     label03:
+        l2#6_1 = Phi(l2#6 #2, l2#6_2 #3);
+
+        l4_4 = Phi(l4_3 #2, l4_5 #3);
+
+        $r25 = l0.<MyCalculator: MySpecialButton[] specialButton>;
+
+        $i5 = lengthof $r25;
+
+        if l4_4 >= $i5 goto label04;
+
+        $r46 = l0.<MyCalculator: MySpecialButton[] specialButton>;
+
+        $r43 = new MySpecialButton;
+
+        $r44 = l0.<MyCalculator: java.lang.String[] specialButtonText>;
+
+        $r45 = $r44[l4_4];
+
+        specialinvoke $r43.<MySpecialButton: void <init>(int,int,int,int,java.lang.String,MyCalculator)>(l2#6_1, l3_1, 60, 30, $r45, l0);
+
+        $r46[l4_4] = $r43;
+
+        $r47 = l0.<MyCalculator: MySpecialButton[] specialButton>;
+
+        $r49 = $r47[l4_4];
+
+        $r48 = <java.awt.Color: java.awt.Color RED>;
+
+        virtualinvoke $r49.<MySpecialButton: void setForeground(java.awt.Color)>($r48);
+
+        $i13 = l2#6_1 + 60;
+
+        l2#6_2 = $i13 + 10;
+
+        l4_5 = l4_4 + 1;
+
+(3)     goto label03;
+
+     label04:
+        l4#9 = 70;
+
+        l5 = 130;
+
+        l2#6_3 = l4#9;
+
+        l3#4_3 = l5;
+
+(4)     l6 = 0;
+
+     label05:
+        l2#6_4 = Phi(l2#6_3 #4, l2#6_7 #7);
+
+        l3#4_4 = Phi(l3#4_3 #4, l3#4_6 #7);
+
+        l6_1 = Phi(l6 #4, l6_2 #7);
+
+        $r26 = l0.<MyCalculator: MyDigitButton[] digitButton>;
+
+        $i6 = lengthof $r26;
+
+        if l6_1 >= $i6 goto label07;
+
+        $r39 = l0.<MyCalculator: MyDigitButton[] digitButton>;
+
+        $r36 = new MyDigitButton;
+
+        $r37 = l0.<MyCalculator: java.lang.String[] digitButtonText>;
+
+        $r38 = $r37[l6_1];
+
+        specialinvoke $r36.<MyDigitButton: void <init>(int,int,int,int,java.lang.String,MyCalculator)>(l2#6_4, l3#4_4, 30, 30, $r38, l0);
+
+        $r39[l6_1] = $r36;
+
+        $r40 = l0.<MyCalculator: MyDigitButton[] digitButton>;
+
+        $r42 = $r40[l6_1];
+
+        $r41 = <java.awt.Color: java.awt.Color BLUE>;
+
+        virtualinvoke $r42.<MyDigitButton: void setForeground(java.awt.Color)>($r41);
+
+        l2#6_5 = l2#6_4 + 40;
+
+        $i11 = l6_1 + 1;
+
+        $i12 = $i11 % 3;
+
+(5)     if $i12 != 0 goto label06;
+
+        l2#6_6 = l4#9;
+
+(6)     l3#4_5 = l3#4_4 + 40;
+
+     label06:
+        l2#6_7 = Phi(l2#6_5 #5, l2#6_6 #6);
+
+        l3#4_6 = Phi(l3#4_4 #5, l3#4_5 #6);
+
+        l6_2 = l6_1 + 1;
+
+(7)     goto label05;
+
+     label07:
+        $i7 = l4#9 + 80;
+
+        l6_3 = $i7 + 10;
+
+        l7 = l5;
+
+        l2#6_8 = l6_3;
+
+        l3#4_7 = l7;
+
+(8)     l8 = 0;
+
+     label08:
+        l2#6_9 = Phi(l2#6_8 #8, l2#6_12 #11);
+
+        l8_1 = Phi(l8 #8, l8_2 #11);
+
+        l3#4_8 = Phi(l3#4_7 #8, l3#4_10 #11);
+
+        $r27 = l0.<MyCalculator: MyOperatorButton[] operatorButton>;
+
+        $i8 = lengthof $r27;
+
+        if l8_1 >= $i8 goto label10;
+
+        l2#6_10 = l2#6_9 + 40;
+
+        $r32 = l0.<MyCalculator: MyOperatorButton[] operatorButton>;
+
+        $r29 = new MyOperatorButton;
+
+        $r30 = l0.<MyCalculator: java.lang.String[] operatorButtonText>;
+
+        $r31 = $r30[l8_1];
+
+        specialinvoke $r29.<MyOperatorButton: void <init>(int,int,int,int,java.lang.String,MyCalculator)>(l2#6_10, l3#4_8, 30, 30, $r31, l0);
+
+        $r32[l8_1] = $r29;
+
+        $r33 = l0.<MyCalculator: MyOperatorButton[] operatorButton>;
+
+        $r35 = $r33[l8_1];
+
+        $r34 = <java.awt.Color: java.awt.Color RED>;
+
+        virtualinvoke $r35.<MyOperatorButton: void setForeground(java.awt.Color)>($r34);
+
+        $i9 = l8_1 + 1;
+
+        $i10 = $i9 % 2;
+
+(9)     if $i10 != 0 goto label09;
+
+        l2#6_11 = l6_3;
+
+(10)    l3#4_9 = l3#4_8 + 40;
+
+     label09:
+        l2#6_12 = Phi(l2#6_10 #9, l2#6_11 #10);
+
+        l3#4_10 = Phi(l3#4_8 #9, l3#4_9 #10);
+
+        l8_2 = l8_1 + 1;
+
+(11)    goto label08;
+
+     label10:
+        $r28 = new MyCalculator$1;
+
+        specialinvoke $r28.<MyCalculator$1: void <init>(MyCalculator)>(l0);
+
+        virtualinvoke l0.<MyCalculator: void addWindowListener(java.awt.event.WindowListener)>($r28);
+
+        virtualinvoke l0.<MyCalculator: void setLayout(java.awt.LayoutManager)>(null);
+
+        virtualinvoke l0.<MyCalculator: void setSize(int,int)>(325, 325);
+
+        virtualinvoke l0.<MyCalculator: void setVisible(boolean)>(1);
+
+        return;
+    }
+
+    static java.lang.String getFormattedText(double)
+    {
+        double l0;
+        java.lang.StringBuilder $r0, $r1, $r2;
+        int $i0, $i1, $i2;
+        java.lang.String l2, l2_1, l2_2;
+
+        l0 := @parameter0: double;
+
+        $r0 = new java.lang.StringBuilder;
+
+        specialinvoke $r0.<java.lang.StringBuilder: void <init>()>();
+
+        $r1 = virtualinvoke $r0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("");
+
+        $r2 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(double)>(l0);
+
+        l2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $i0 = virtualinvoke l2.<java.lang.String: int lastIndexOf(java.lang.String)>(".0");
+
+(0)     if $i0 <= 0 goto label1;
+
+        $i1 = virtualinvoke l2.<java.lang.String: int length()>();
+
+        $i2 = $i1 - 2;
+
+(1)     l2_1 = virtualinvoke l2.<java.lang.String: java.lang.String substring(int,int)>(0, $i2);
+
+     label1:
+        l2_2 = Phi(l2 #0, l2_1 #1);
+
+        return l2_2;
+    }
+
+    public static void main(java.lang.String[])
+    {
+        java.lang.String[] l0;
+        MyCalculator $r0;
+
+        l0 := @parameter0: java.lang.String[];
+
+        $r0 = new MyCalculator;
+
+        specialinvoke $r0.<MyCalculator: void <init>(java.lang.String)>("Calculator - JavaTpoint");
+
+        return;
+    }
+}
